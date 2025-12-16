@@ -18,8 +18,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="text-2xl font-bold tracking-tight">
-            <span className="text-foreground">Zuvi</span>
-            <span className="text-primary">go</span>
+            <img src="./logo.png" alt="" />
+            {/* <span className="text-foreground">Zuvi</span>
+            <span className="text-primary">go</span> */}
           </a>
 
           {/* Desktop Navigation */}
