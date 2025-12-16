@@ -17,11 +17,14 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="text-2xl font-bold tracking-tight">
-            <img src="./logo.png" alt="" />
-            {/* <span className="text-foreground">Zuvi</span>
-            <span className="text-primary">go</span> */}
-          </a>
+          <a href="#" className="flex items-center gap-2">
+  <img
+    src="/logo.png"
+    alt="Zuvigo"
+    className="h-8 w-auto md:h-16 object-contain"
+  />
+</a>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
