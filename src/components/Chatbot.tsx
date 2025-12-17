@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles, Calendar, Mail, User } from 'lucide-react';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,66 @@ const Chatbot = () => {
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [showBookingForm, setShowBookingForm] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '' });
   const messagesEndRef = useRef(null);
+
+  const OPENROUTER_API_KEY = "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"; // Replace with your OpenRouter API key
+
+  const faqData = {
+    "brand": "Zuvigo",
+    "category": "Digital Agency for Founders",
+    "faqs": [
+      {
+        "id": 1,
+        "category": "General",
+        "question": "What does Zuvigo do?",
+        "answer": "Zuvigo is a digital agency that helps founders and entrepreneurs build scalable digital systems. We design high-converting websites, automate operations, drive growth through content, and provide analytics for data-driven decisions."
+      },
+      {
+        "id": 2,
+        "category": "General",
+        "question": "Who is Zuvigo best suited for?",
+        "answer": "Zuvigo works with startup founders, SaaS companies, service businesses, agencies, e-commerce brands, and creators who want to build, automate, and scale their digital presence."
+      },
+      {
+        "id": 3,
+        "category": "General",
+        "question": "Do you only build websites?",
+        "answer": "No. Websites are only one part of the system. Zuvigo builds complete digital ecosystems including automation, AI tools, marketing workflows, analytics dashboards, and growth systems."
+      },
+      {
+        "id": 4,
+        "category": "Process",
+        "question": "What is your working process?",
+        "answer": "Our process has four stages: Strategy & Product, Website & Platform, Growth & Optimization, and Ongoing Support. Each stage ensures alignment with business goals and scalable execution."
+      },
+      {
+        "id": 12,
+        "category": "Automate & Scale",
+        "question": "What does Automate & Scale mean?",
+        "answer": "Automate & Scale focuses on streamlining operations using AI, automation tools, and integrations so your business can run efficiently 24/7."
+      },
+      {
+        "id": 13,
+        "category": "Automation",
+        "question": "What kind of automation do you offer?",
+        "answer": "We build AI chat and call systems, auto-booking workflows, lead capture systems, CRM integrations, email automation, and internal workflow automations."
+      },
+      {
+        "id": 23,
+        "category": "Pricing",
+        "question": "How do you price your services?",
+        "answer": "Pricing depends on project scope, complexity, and timelines. We offer custom quotes after understanding your business requirements."
+      },
+      {
+        "id": 27,
+        "category": "Getting Started",
+        "question": "How can I start working with Zuvigo?",
+        "answer": "You can schedule a call or send us a message. We'll discuss your goals and recommend the best strategy to build what's next."
+      }
+    ]
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -23,13 +82,13 @@ const Chatbot = () => {
   }, [messages]);
 
   const quickReplies = [
-    "Tell me about your services",
-    "How much does it cost?",
-    "Can I schedule a call?",
-    "Show me your portfolio"
+    "What services do you offer?",
+    "Show me pricing",
+    "Book a meeting",
+    "Tell me about automation"
   ];
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
 
     const userMessage = {
@@ -39,42 +98,141 @@ const Chatbot = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const userInput = input;
     setInput('');
     setIsTyping(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponse = getBotResponse(input);
+    try {
+      // Check if user wants to book a meeting
+      if (userInput.toLowerCase().includes('book') || 
+          userInput.toLowerCase().includes('meeting') || 
+          userInput.toLowerCase().includes('schedule') ||
+          userInput.toLowerCase().includes('call')) {
+        setIsTyping(false);
+        setShowBookingForm(true);
+        setMessages(prev => [...prev, {
+          type: 'bot',
+          text: "Great! I'd love to help you schedule a meeting. Please fill out the form below and our team will reach out to you within 24 hours! 📅",
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        }]);
+        return;
+      }
+
+      // Create context from FAQ data
+      const context = faqData.faqs.map(faq => 
+        `Q: ${faq.question}\nA: ${faq.answer}`
+      ).join('\n\n');
+
+      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": window.location.href,
+          "X-Title": "Zuvigo AI Chatbot"
+        },
+        body: JSON.stringify({
+          model: "nvidia/nemotron-nano-12b-v2-vl:free",
+          messages: [
+            { 
+              role: "system", 
+              content: `You are Zuvigo's helpful AI assistant. Use the following FAQ information to answer questions about Zuvigo's services:
+
+${context}
+
+Provide helpful, friendly, and concise responses. If asked about booking a meeting or scheduling a call, let them know they can book a meeting. Keep responses engaging and professional.` 
+            },
+            {
+              role: "user",
+              content: userInput
+            }
+          ],
+          stream: true
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let botResponse = "";
+      
+      // Create a placeholder message that we'll update
+      const botMessageIndex = messages.length + 1;
       setMessages(prev => [...prev, {
         type: 'bot',
-        text: botResponse,
+        text: "",
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      }]);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n').filter(line => line.trim() !== '');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+            if (data === '[DONE]') continue;
+
+            try {
+              const parsed = JSON.parse(data);
+              const content = parsed.choices?.[0]?.delta?.content;
+              
+              if (content) {
+                botResponse += content;
+                // Update the message in real-time
+                setMessages(prev => {
+                  const updated = [...prev];
+                  updated[botMessageIndex] = {
+                    type: 'bot',
+                    text: botResponse,
+                    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                  };
+                  return updated;
+                });
+              }
+            } catch (e) {
+              console.error('Parse error:', e);
+            }
+          }
+        }
+      }
+
+      setIsTyping(false);
+
+    } catch (error) {
+      console.error('Error:', error);
+      setMessages(prev => [...prev, {
+        type: 'bot',
+        text: "I apologize, but I'm having trouble connecting right now. Please try again or contact us directly at hello@zuvigo.com",
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
       setIsTyping(false);
-    }, 1000);
-  };
-
-  const getBotResponse = (userInput) => {
-    const input = userInput.toLowerCase();
-    
-    if (input.includes('service') || input.includes('offer')) {
-      return "We offer comprehensive digital solutions including:\n\n• Custom Website Design\n• AI Automation & Setup\n• Social Media Management\n• Analytics & Insights\n\nWhich area interests you most?";
-    } else if (input.includes('cost') || input.includes('price') || input.includes('pricing')) {
-      return "Our pricing is customized based on your specific needs. We offer flexible packages starting from basic web presence to complete digital transformation.\n\nWould you like to schedule a free consultation to discuss your project?";
-    } else if (input.includes('call') || input.includes('meeting') || input.includes('schedule')) {
-      return "Great! I'd be happy to help you schedule a consultation.\n\n📅 You can book a call directly at: [Book Here]\n\nOr share your email, and our team will reach out within 24 hours!";
-    } else if (input.includes('portfolio') || input.includes('work') || input.includes('projects')) {
-      return "We've helped numerous businesses transform their digital presence! Check out our Selected Work section on the homepage to see our recent projects.\n\nWould you like more details about any specific industry?";
-    } else if (input.includes('hi') || input.includes('hello') || input.includes('hey')) {
-      return "Hello! 👋 I'm here to help you learn more about Zuvigo's digital solutions. What would you like to know?";
-    } else {
-      return "Thanks for your message! Our team specializes in helping businesses build, automate, and grow their digital presence.\n\nWould you like to:\n• Learn about our services\n• See our work\n• Schedule a consultation";
     }
   };
 
   const handleQuickReply = (reply) => {
     setInput(reply);
     setTimeout(() => handleSend(), 100);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim()) return;
+
+    setMessages(prev => [...prev, {
+      type: 'bot',
+      text: `Thank you, ${formData.name}! 🎉\n\nWe've received your booking request at ${formData.email}. Our team will reach out to you within 24 hours to schedule your consultation.\n\nIs there anything else I can help you with?`,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    }]);
+
+    setShowBookingForm(false);
+    setFormData({ name: '', email: '' });
   };
 
   return (
@@ -87,21 +245,17 @@ const Chatbot = () => {
         }`}
       >
         <div className="relative">
-          {/* Pulse animation */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-500 rounded-full animate-ping opacity-20"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-500 rounded-full animate-ping opacity-20"></div>
           
-          {/* Main button */}
           <div className="relative w-16 h-16 bg-indigo-600 rounded-full shadow-lg flex items-center justify-center hover:shadow-2xl hover:scale-110 transition-all duration-300">
             <MessageCircle className="w-7 h-7 text-white" />
           </div>
 
-          {/* Notification badge */}
           <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold animate-bounce">
             1
           </div>
         </div>
 
-        {/* Tooltip */}
         <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <div className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-xl">
             Chat with us! 💬
@@ -112,22 +266,22 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       <div
-        className={`fixed bottom-6 right-6 z-50 w-[380px] h-[600px] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 ${
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
         }`}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-primary to-blue-500 p-4 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-indigo-600 to-blue-500 p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-primary" />
+                <Sparkles className="w-5 h-5 text-indigo-600" />
               </div>
               <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
             </div>
             <div>
-              <h3 className="text-white font-semibold">Zuvigo Assistant</h3>
-              <p className="text-white/80 text-xs">Online • Responds in minutes</p>
+              <h3 className="text-white font-semibold">Zuvigo AI Assistant</h3>
+              <p className="text-white/80 text-xs">Online • AI-Powered</p>
             </div>
           </div>
           <button
@@ -139,7 +293,7 @@ const Chatbot = () => {
         </div>
 
         {/* Messages */}
-        <div className="h-[420px] overflow-y-auto p-4 bg-gradient-to-b from-card to-card/50 space-y-4">
+        <div className="h-[420px] overflow-y-auto p-4 bg-gradient-to-b from-gray-50 to-white space-y-4">
           {messages.map((msg, idx) => (
             <div
               key={idx}
@@ -148,12 +302,12 @@ const Chatbot = () => {
               <div
                 className={`max-w-[75%] rounded-2xl px-4 py-3 ${
                   msg.type === 'user'
-                    ? 'bg-gradient-to-r from-primary to-blue-500 text-white rounded-br-none'
-                    : 'bg-muted text-foreground rounded-bl-none'
+                    ? 'bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-br-none'
+                    : 'bg-gray-100 text-gray-800 rounded-bl-none'
                 }`}
               >
                 <p className="text-sm whitespace-pre-line">{msg.text}</p>
-                <p className={`text-xs mt-1 ${msg.type === 'user' ? 'text-white/70' : 'text-muted-foreground'}`}>
+                <p className={`text-xs mt-1 ${msg.type === 'user' ? 'text-white/70' : 'text-gray-500'}`}>
                   {msg.time}
                 </p>
               </div>
@@ -162,11 +316,58 @@ const Chatbot = () => {
 
           {isTyping && (
             <div className="flex justify-start animate-in slide-in-from-bottom-2 duration-300">
-              <div className="bg-muted rounded-2xl rounded-bl-none px-4 py-3">
+              <div className="bg-gray-100 rounded-2xl rounded-bl-none px-4 py-3">
                 <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Booking Form */}
+          {showBookingForm && (
+            <div className="animate-in slide-in-from-bottom-2 duration-300">
+              <div className="bg-white border-2 border-indigo-200 rounded-xl p-4 shadow-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <Calendar className="w-5 h-5 text-indigo-600" />
+                  <h4 className="font-semibold text-gray-800">Book a Meeting</h4>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Your Name</label>
+                    <div className="relative">
+                      <User className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        placeholder="John Doe"
+                        className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Email Address</label>
+                    <div className="relative">
+                      <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        placeholder="john@example.com"
+                        className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleFormSubmit}
+                    disabled={!formData.name.trim() || !formData.email.trim()}
+                    className="w-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white py-2 rounded-lg font-medium hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  >
+                    Submit Request
+                  </button>
                 </div>
               </div>
             </div>
@@ -177,14 +378,14 @@ const Chatbot = () => {
 
         {/* Quick Replies */}
         {messages.length === 1 && (
-          <div className="px-4 py-2 border-t border-border bg-card/50">
-            <p className="text-xs text-muted-foreground mb-2">Quick replies:</p>
+          <div className="px-4 py-2 border-t border-gray-200 bg-gray-50">
+            <p className="text-xs text-gray-600 mb-2">Quick replies:</p>
             <div className="flex flex-wrap gap-2">
               {quickReplies.map((reply, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleQuickReply(reply)}
-                  className="text-xs px-3 py-1.5 bg-muted hover:bg-muted/80 rounded-full transition-colors"
+                  className="text-xs px-3 py-1.5 bg-white border border-gray-200 hover:bg-gray-100 rounded-full transition-colors"
                 >
                   {reply}
                 </button>
@@ -194,7 +395,7 @@ const Chatbot = () => {
         )}
 
         {/* Input */}
-        <div className="p-4 border-t border-border bg-card">
+        <div className="p-4 border-t border-gray-200 bg-white">
           <div className="flex gap-2">
             <input
               type="text"
@@ -202,12 +403,12 @@ const Chatbot = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Type your message..."
-              className="flex-1 px-4 py-3 bg-muted rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+              className="flex-1 px-4 py-3 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
             />
             <button
               onClick={handleSend}
               disabled={!input.trim()}
-              className="bg-gradient-to-r from-primary to-blue-500 text-white p-3 rounded-xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-indigo-600 to-blue-500 text-white p-3 rounded-xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
             >
               <Send className="w-5 h-5" />
             </button>
