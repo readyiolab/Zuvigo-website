@@ -22,55 +22,169 @@ const Chatbot = () => {
     "brand": "Zuvigo",
     "category": "Digital Agency for Founders",
     "faqs": [
-      {
-        "id": 1,
-        "category": "General",
-        "question": "What does Zuvigo do?",
-        "answer": "Zuvigo is a digital agency that helps founders and entrepreneurs build scalable digital systems. We design high-converting websites, automate operations, drive growth through content, and provide analytics for data-driven decisions."
-      },
-      {
-        "id": 2,
-        "category": "General",
-        "question": "Who is Zuvigo best suited for?",
-        "answer": "Zuvigo works with startup founders, SaaS companies, service businesses, agencies, e-commerce brands, and creators who want to build, automate, and scale their digital presence."
-      },
-      {
-        "id": 3,
-        "category": "General",
-        "question": "Do you only build websites?",
-        "answer": "No. Websites are only one part of the system. Zuvigo builds complete digital ecosystems including automation, AI tools, marketing workflows, analytics dashboards, and growth systems."
-      },
-      {
-        "id": 4,
-        "category": "Process",
-        "question": "What is your working process?",
-        "answer": "Our process has four stages: Strategy & Product, Website & Platform, Growth & Optimization, and Ongoing Support. Each stage ensures alignment with business goals and scalable execution."
-      },
-      {
-        "id": 12,
-        "category": "Automate & Scale",
-        "question": "What does Automate & Scale mean?",
-        "answer": "Automate & Scale focuses on streamlining operations using AI, automation tools, and integrations so your business can run efficiently 24/7."
-      },
-      {
-        "id": 13,
-        "category": "Automation",
-        "question": "What kind of automation do you offer?",
-        "answer": "We build AI chat and call systems, auto-booking workflows, lead capture systems, CRM integrations, email automation, and internal workflow automations."
-      },
-      {
-        "id": 23,
-        "category": "Pricing",
-        "question": "How do you price your services?",
-        "answer": "Pricing depends on project scope, complexity, and timelines. We offer custom quotes after understanding your business requirements."
-      },
-      {
-        "id": 27,
-        "category": "Getting Started",
-        "question": "How can I start working with Zuvigo?",
-        "answer": "You can schedule a call or send us a message. We'll discuss your goals and recommend the best strategy to build what's next."
-      }
-    ]
+    {
+      "id": 1,
+      "category": "General",
+      "question": "What does Zuvigo do?",
+      "answer": "Zuvigo is a digital agency that helps founders and entrepreneurs build scalable digital systems. We design high-converting websites, automate operations, drive growth through content, and provide analytics for data-driven decisions."
+    },
+    {
+      "id": 2,
+      "category": "General",
+      "question": "Who is Zuvigo best suited for?",
+      "answer": "Zuvigo works with startup founders, SaaS companies, service businesses, agencies, e-commerce brands, and creators who want to build, automate, and scale their digital presence."
+    },
+    {
+      "id": 3,
+      "category": "General",
+      "question": "Do you only build websites?",
+      "answer": "No. Websites are only one part of the system. Zuvigo builds complete digital ecosystems including automation, AI tools, marketing workflows, analytics dashboards, and growth systems."
+    },
+    {
+      "id": 4,
+      "category": "Process",
+      "question": "What is your working process?",
+      "answer": "Our process has four stages: Strategy & Product, Website & Platform, Growth & Optimization, and Ongoing Support. Each stage ensures alignment with business goals and scalable execution."
+    },
+    {
+      "id": 5,
+      "category": "Process",
+      "question": "How do you start a new project?",
+      "answer": "We begin with a discovery and strategy session to understand your goals, audience, and challenges. From there, we create a roadmap and execution plan."
+    },
+    {
+      "id": 6,
+      "category": "Strategy",
+      "question": "What is included in Strategy & Product planning?",
+      "answer": "This includes market research, user personas, competitor analysis, feature planning, and a clear product or website roadmap aligned with business objectives."
+    },
+    {
+      "id": 7,
+      "category": "Website & Platform",
+      "question": "What kind of websites do you build?",
+      "answer": "We build custom, mobile-first, high-performance websites including business websites, SaaS platforms, landing pages, dashboards, and CMS-based systems."
+    },
+    {
+      "id": 8,
+      "category": "Website & Platform",
+      "question": "Are your websites SEO-friendly?",
+      "answer": "Yes. All Zuvigo websites are built with SEO best practices including fast loading, clean structure, mobile optimization, and analytics integration."
+    },
+    {
+      "id": 9,
+      "category": "Build & Presence",
+      "question": "What is Build & Presence?",
+      "answer": "Build & Presence focuses on creating a strong digital foundation through websites, landing pages, CMS systems, and local visibility tools that convert visitors into customers."
+    },
+    {
+      "id": 10,
+      "category": "Build & Presence",
+      "question": "Do you build landing pages for lead generation?",
+      "answer": "Yes. We design high-converting landing pages with optimized layouts, funnels, A/B testing, and analytics tracking."
+    },
+    {
+      "id": 11,
+      "category": "Local SEO",
+      "question": "Do you manage Google Business Profiles?",
+      "answer": "Yes. We handle profile setup, optimization, review management, analytics tracking, and local listing management to improve local visibility."
+    },
+    {
+      "id": 12,
+      "category": "Automate & Scale",
+      "question": "What does Automate & Scale mean?",
+      "answer": "Automate & Scale focuses on streamlining operations using AI, automation tools, and integrations so your business can run efficiently 24/7."
+    },
+    {
+      "id": 13,
+      "category": "Automation",
+      "question": "What kind of automation do you offer?",
+      "answer": "We build AI chat and call systems, auto-booking workflows, lead capture systems, CRM integrations, email automation, and internal workflow automations."
+    },
+    {
+      "id": 14,
+      "category": "Automation",
+      "question": "Can you integrate AI into my business?",
+      "answer": "Yes. We set up AI-powered chatbots, call agents, booking systems, and intelligent workflows tailored to your business needs."
+    },
+    {
+      "id": 15,
+      "category": "Email Marketing",
+      "question": "Do you handle email marketing automation?",
+      "answer": "Yes. We design email campaigns, drip sequences, segmentation strategies, and analytics to nurture leads and improve conversions."
+    },
+    {
+      "id": 16,
+      "category": "Engage & Grow",
+      "question": "What is Engage & Grow?",
+      "answer": "Engage & Grow focuses on building loyal audiences through content, social media management, storytelling, and consistent brand visibility."
+    },
+    {
+      "id": 17,
+      "category": "Social Media",
+      "question": "Do you manage social media accounts?",
+      "answer": "Yes. We handle content strategy, post scheduling, engagement tracking, community building, and growth optimization."
+    },
+    {
+      "id": 18,
+      "category": "Video & Reels",
+      "question": "Do you create videos and reels?",
+      "answer": "Yes. We produce professional videos and reels including content strategy, editing, platform optimization, and social media integration."
+    },
+    {
+      "id": 19,
+      "category": "Analytics & Insights",
+      "question": "What is Analytics & Insights?",
+      "answer": "Analytics & Insights helps businesses understand performance through dashboards, KPIs, funnel tracking, user behavior analysis, and optimization experiments."
+    },
+    {
+      "id": 20,
+      "category": "Analytics",
+      "question": "What analytics tools do you use?",
+      "answer": "We use tools like Google Analytics, dashboards, heatmaps, A/B testing platforms, CRM analytics, and custom reporting systems."
+    },
+    {
+      "id": 21,
+      "category": "Analytics",
+      "question": "Do you provide real-time dashboards?",
+      "answer": "Yes. We build custom dashboards showing KPIs, conversions, traffic, revenue insights, and performance summaries."
+    },
+    {
+      "id": 22,
+      "category": "Portfolio",
+      "question": "Can I see your past work?",
+      "answer": "Yes. Our portfolio includes projects like Arbilo, SinghKarman, and iGrowBig, covering product strategy, platforms, automation, branding, and growth systems."
+    },
+    {
+      "id": 23,
+      "category": "Pricing",
+      "question": "How do you price your services?",
+      "answer": "Pricing depends on project scope, complexity, and timelines. We offer custom quotes after understanding your business requirements."
+    },
+    {
+      "id": 24,
+      "category": "Timeline",
+      "question": "How long does a project take?",
+      "answer": "Timelines vary by project. A website may take 2–4 weeks, while full systems with automation and analytics can take 4–8 weeks or more."
+    },
+    {
+      "id": 25,
+      "category": "Support",
+      "question": "Do you offer ongoing support?",
+      "answer": "Yes. We provide 24/7 support, maintenance, regular updates, and continuous optimization based on performance data."
+    },
+    {
+      "id": 26,
+      "category": "Collaboration",
+      "question": "Do you work with remote clients?",
+      "answer": "Yes. Zuvigo is a remote-first agency working with founders and businesses worldwide."
+    },
+    {
+      "id": 27,
+      "category": "Getting Started",
+      "question": "How can I start working with Zuvigo?",
+      "answer": "You can schedule a call or send us a message. We’ll discuss your goals and recommend the best strategy to build what’s next."
+    }
+  ]
   };
 
   const scrollToBottom = () => {
