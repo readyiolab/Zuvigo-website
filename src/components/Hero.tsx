@@ -3,28 +3,26 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gray-100">
+     
       
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-6 text-center relative z-10 max-w-6xl">
+        <div className="max-w-3xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8 fade-in-up">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">Digital Agency for Founders</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-200 bg-white/80 backdrop-blur-sm mb-8 fade-in-up shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-slate-900 animate-pulse" />
+            <span className="text-sm text-slate-900 font-medium">Digital Agency for Founders</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 fade-in-up stagger-1">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 fade-in-up stagger-1 text-slate-900">
             We Don't Just Build Websites.
             <br />
-            <span className="text-gradient">We Build What's Next.</span>
+            <span className="bg-indigo-600  bg-clip-text text-transparent">We Build What's Next.</span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 fade-in-up stagger-2">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 fade-in-up stagger-2">
             From sleek websites to smart automation, we help founders and entrepreneurs 
             build digital systems that scale their business.
           </p>
@@ -33,7 +31,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up stagger-3">
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground glow-blue-sm hover:glow-blue transition-all duration-300 px-8"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-500/30  transition-all duration-300 px-8"
             >
               Let's Build Together
               <ArrowRight className="ml-2 w-4 h-4" />
@@ -41,21 +39,49 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-border hover:border-primary/50 hover:bg-primary/5 px-8"
+              className="bg-slate-900 hover:bg-slate-950 text-white px-8"
             >
               View Our Work
             </Button>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 fade-in-up stagger-4">
-          <a href="#process" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            <span className="text-sm">Scroll to explore</span>
-            <ChevronDown className="w-5 h-5 animate-bounce" />
-          </a>
-        </div>
+       
       </div>
+
+      <style jsx>{`
+        .fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+        }
+        
+        .stagger-1 {
+          animation-delay: 0.1s;
+        }
+        
+        .stagger-2 {
+          animation-delay: 0.2s;
+        }
+        
+        .stagger-3 {
+          animation-delay: 0.3s;
+        }
+        
+        .stagger-4 {
+          animation-delay: 0.4s;
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </section>
   );
 };

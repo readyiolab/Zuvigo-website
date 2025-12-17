@@ -29,13 +29,13 @@ const processes = [
 
 const Process = () => {
   return (
-    <section id="process" className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section id="process" className="py-24 relative bg-white">
+      <div className="container mx-auto px-6 max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-primary text-sm font-medium tracking-wider uppercase">Our Process</span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6">How We Build</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <span className="text-indigo-600 text-sm font-semibold tracking-wider uppercase">Our Process</span>
+          <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 text-slate-900">How We Build</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
             A proven methodology that transforms your ideas into successful digital products.
           </p>
         </div>
@@ -45,27 +45,27 @@ const Process = () => {
           {processes.map((process, index) => (
             <div
               key={process.title}
-              className="group relative p-6 rounded-xl bg-card border border-border card-hover"
+              className="group relative p-8 rounded-2xl bg-white border border-slate-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/50 transition-all duration-300"
             >
               {/* Number */}
-              <span className="absolute top-4 right-4 text-6xl font-bold text-muted/20 group-hover:text-primary/20 transition-colors">
+              <span className="absolute top-6 right-6 text-5xl font-bold text-slate-300 group-hover:text-indigo-100 transition-colors">
                 {String(index + 1).padStart(2, '0')}
               </span>
 
               {/* Icon */}
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <process.icon className="w-6 h-6 text-primary" />
+              <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center mb-5 group-hover:bg-indigo-100 transition-colors relative z-10">
+                <process.icon className="w-7 h-7 text-slate-600" />
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-semibold mb-3">{process.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4">{process.description}</p>
+              <h3 className="text-xl font-bold mb-3 text-slate-900 relative z-10">{process.title}</h3>
+              <p className="text-slate-600 text-sm mb-6 leading-relaxed">{process.description}</p>
 
               {/* Features */}
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {process.features.map((feature) => (
-                  <li key={feature} className="text-sm text-muted-foreground flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <li key={feature} className="text-sm text-slate-600 flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-black flex-shrink-0" />
                     {feature}
                   </li>
                 ))}

@@ -91,7 +91,7 @@ const Chatbot = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-500 rounded-full animate-ping opacity-20"></div>
           
           {/* Main button */}
-          <div className="relative w-16 h-16 bg-gradient-to-r from-primary to-blue-500 rounded-full shadow-lg flex items-center justify-center hover:shadow-2xl hover:scale-110 transition-all duration-300">
+          <div className="relative w-16 h-16 bg-indigo-600 rounded-full shadow-lg flex items-center justify-center hover:shadow-2xl hover:scale-110 transition-all duration-300">
             <MessageCircle className="w-7 h-7 text-white" />
           </div>
 
