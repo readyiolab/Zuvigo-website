@@ -16,7 +16,7 @@ const Chatbot = () => {
   const [formData, setFormData] = useState({ name: '', email: '' });
   const messagesEndRef = useRef(null);
 
-  const OPENROUTER_API_KEY = "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"; // Replace with your OpenRouter API key
+  const OPENROUTER_API_KEY = "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"; // Replace with your OpenRouter API key
 
   const faqData = {
     "brand": "Zuvigo",

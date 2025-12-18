@@ -45,12 +45,9 @@ const Process = () => {
           {processes.map((process, index) => (
             <div
               key={process.title}
-              className="group relative p-8 rounded-2xl bg-white border border-slate-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/50 transition-all duration-300"
+              className="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/50 transition-all duration-300"
             >
-              {/* Number */}
-              <span className="absolute top-6 right-6 text-5xl font-bold text-slate-300 group-hover:text-indigo-100 transition-colors">
-                {String(index + 1).padStart(2, '0')}
-              </span>
+              
 
               {/* Icon */}
               <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center mb-5 group-hover:bg-indigo-100 transition-colors relative z-10">

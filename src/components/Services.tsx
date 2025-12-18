@@ -1,4 +1,4 @@
-import { Globe, Zap, TrendingUp, BarChart3, Check } from 'lucide-react';
+import { Globe, Zap, TrendingUp, BarChart3, Dot } from 'lucide-react';
 
 const Services = () => {
   return (
@@ -38,44 +38,44 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Mobile Optimization</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">SEO-Integrated Design</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Fast Loading, High Conversion</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">CMS & Custom Dashboards</span>
                 </li>
               </ul>
             </div>
 
             <div className="p-8 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300">
-              <h4 className="text-xl font-bold mb-3 text-slate-900">High-Converting Landing Pages</h4>
+              <h4 className="text-xl font-bold mb-3 text-slate-900">Conversion Pages</h4>
               <p className="text-slate-600 text-sm mb-6">
                 Create funnels that turn visitors into booked calls and sales.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Conversion-focused layouts & flows</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Custom Funnels</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">A/B Testing</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Analytics Integration</span>
                 </li>
               </ul>
@@ -88,19 +88,19 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Local SEO Optimization</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Profile Setup & Review Management</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Analytics Tracking</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Local Listing Management</span>
                 </li>
               </ul>
@@ -108,7 +108,7 @@ const Services = () => {
           </div>
 
           <div className="text-center mt-10">
-            <p className="text-slate-500 italic text-lg">
+            <p className="text-slate-900 italic font-bold text-lg border-b-2  pb-2 inline-block border-slate-200">
               Your digital home — designed to earn trust and convert visitors into customers.
             </p>
           </div>
@@ -133,26 +133,26 @@ const Services = () => {
 
           {/* Service Cards */}
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-100/50 transition-all duration-300">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-100/50 transition-all duration-300">
               <h4 className="text-xl font-bold mb-3 text-slate-900">AI Setup & Automation</h4>
               <p className="text-slate-600 text-sm mb-6">
                 Automate client interactions with intelligent systems for calls, chats, & scheduling.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">AI Chat & Call Systems</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Auto Booking & Lead Capture</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Workflow Integrations</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">24/7 Automated Operations</span>
                 </li>
               </ul>
@@ -165,19 +165,19 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Campaign Design & Segmentation</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Drip Sequences & Analytics</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Lead Nurturing Automations</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Engagement Tracking</span>
                 </li>
               </ul>
@@ -190,19 +190,19 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Review Collection & Display</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Testimonial Automation</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Feedback Monitoring Systems</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Response Management</span>
                 </li>
               </ul>
@@ -210,7 +210,7 @@ const Services = () => {
           </div>
 
           <div className="text-center mt-10">
-            <p className="text-slate-500 italic text-lg">
+            <p className="text-slate-900 italic font-bold text-lg border-b-2  pb-2 inline-block border-slate-200">
               From leads to bookings — everything runs seamlessly.
             </p>
           </div>
@@ -242,19 +242,19 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Content Creation & Strategy</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Posting Schedules & Automation</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Engagement Tracking</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Brand Community Building</span>
                 </li>
               </ul>
@@ -267,19 +267,19 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Video Production & Reels Creation</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Content Strategy</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Social Media Integration</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Professional Editing</span>
                 </li>
               </ul>
@@ -292,19 +292,19 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Blog & Newsletter Systems</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Cross-Channel Publishing</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">SEO-Driven Content Planning</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-violet-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Engagement Optimization</span>
                 </li>
               </ul>
@@ -312,7 +312,7 @@ const Services = () => {
           </div>
 
           <div className="text-center mt-10">
-            <p className="text-slate-500 italic text-lg">
+            <p className="text-slate-900 italic text-lg border-b-2 font-bold pb-2 inline-block border-slate-200">
               Turn engagement into growth through storytelling and visibility.
             </p>
           </div>
@@ -337,26 +337,26 @@ const Services = () => {
 
           {/* Service Cards */}
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100/50 transition-all duration-300">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100/50 transition-all duration-300">
               <h4 className="text-xl font-bold mb-3 text-slate-900">Performance Analytics</h4>
               <p className="text-slate-600 text-sm mb-6">
                 Get visibility into what's driving growth and what's not.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Funnel Performance & Drop-off Tracking</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Real-time KPI Dashboards</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Conversion Metrics & Trend Visualization</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Traffic Source Analysis</span>
                 </li>
               </ul>
@@ -369,44 +369,44 @@ const Services = () => {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">A/B Testing & Variant Tracking</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">UX & UI Impact Measurement</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Behavior Heatmaps & Click Maps</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Data-Driven Content Improvements</span>
                 </li>
               </ul>
             </div>
 
             <div className="p-8 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100/50 transition-all duration-300">
-              <h4 className="text-xl font-bold mb-3 text-slate-900">Business Intelligence Dashboards</h4>
+              <h4 className="text-xl font-bold mb-3 text-slate-900">Analytics Dashboards</h4>
               <p className="text-slate-600 text-sm mb-6">
                 Centralize your data and insights across tools in one clean view.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Marketing ROI Reporting</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Attribution & Forecasting Models</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Data Pipeline Integrations</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
-                  <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Dot className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Automated Performance Summaries</span>
                 </li>
               </ul>
@@ -414,7 +414,7 @@ const Services = () => {
           </div>
 
           <div className="text-center mt-10">
-            <p className="text-slate-500 italic text-lg">
+            <p className="text-slate-900 italic text-lg border-b-2 font-bold pb-2 inline-block border-slate-200">
               Data-backed decisions for continuous improvement.
             </p>
           </div>
