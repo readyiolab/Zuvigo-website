@@ -24,8 +24,8 @@ const Services = () => {
                 From your first website to an integrated digital ecosystem, we help you create an online presence that performs and converts.
               </p>
             </div>
-            <div className="relative h-80 bg-gray-100 rounded-3xl flex items-center justify-center shadow-lg shadow-blue-100/50">
-              <img src="./Build.png" alt="Build & Presence" className="max-h-full object-contain" />
+            <div className="relative h-80  rounded-3xl flex items-center justify-center ">
+              <img src="./Build.png" alt="Build & Presence" className="max-h-full object-contain shadow-lg" />
             </div>
           </div>
 
@@ -117,7 +117,7 @@ const Services = () => {
         {/* Automate & Scale Section - Image Left */}
         <div className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-12">
-            <div className="relative h-80 bg-gray-100 rounded-3xl flex items-center justify-center  shadow-lg shadow-indigo-100/50 order-2 md:order-1">
+            <div className="relative h-80  rounded-3xl flex items-center justify-center  shadow-lg shadow-indigo-100/50 order-2 md:order-1">
               <img src="./Automate.png" alt="Automate & Scale" className="max-h-full object-contain" />
             </div>
             <div className="order-1 md:order-2">
@@ -228,7 +228,7 @@ const Services = () => {
                 Transform your audience into loyal advocates through authentic content, storytelling, and consistent visibility.
               </p>
             </div>
-            <div className="relative h-80 bg-gray-100 rounded-3xl flex items-center justify-center shadow-lg shadow-violet-100/50">
+            <div className="relative h-80  rounded-3xl flex items-center justify-center shadow-lg shadow-violet-100/50">
               <img src="./Grow.png" alt="Engage & Grow" className="max-h-full object-contain" />
             </div>
           </div>
@@ -321,8 +321,8 @@ const Services = () => {
         {/* Analytics & Insights Section - Image Left */}
         <div>
           <div className="grid md:grid-cols-2 gap-16 items-center mb-12">
-            <div className="relative h-80 bg-gray-100 rounded-3xl flex items-center justify-center  shadow-lg shadow-emerald-100/50 order-2 md:order-1">
-              <img src="./Analytics.png" alt="Analytics & Insights" className="max-h-full object-contain" />
+            <div className="relative h-80  rounded-3xl flex items-center justify-center   order-2 md:order-1">
+              <img src="./Analytics.png" alt="Analytics & Insights" className="max-h-full object-contain shadow-md" />
             </div>
             <div className="order-1 md:order-2">
               <h3 className="text-4xl font-bold mb-4 text-slate-900">Analytics & Insights</h3>
